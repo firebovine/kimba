@@ -158,7 +158,6 @@ function createFrame(color) {
       conversionOpts.push("+mask")
     }
     conversionOpts.push(frameName)
-/*
     im.convert(conversionOpts, function(err, stdout) {
       if (err) {
         console.log('err: ', err);
@@ -166,7 +165,7 @@ function createFrame(color) {
         return reject(frameName);
       }
       return resolve(frameName);
-    }); */
+    });
   });
 }
 
@@ -202,8 +201,6 @@ function createFrames(colors, callback) {
   colors.forEach(function(gifLayer) {
     sequence = sequence.then(function() {
       return createFrame(gifLayer)
-    }).then(function(url) {
-      console.log("What: " + url);
     }).catch(function(err) {
       console.log("Error: " + err);
     });
