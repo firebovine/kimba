@@ -1,0 +1,22 @@
+{
+  "name": "kimba",
+  "version": "0.0.0",
+  "description": "holiday colors for cats",
+  "main": "kimba.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firebovine/kimba.git"
+  },
+  "author": "firebovine",
+  "license": "GPLv3",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "imagemagick": "^0.1.3",
+    "node-holidayapi": "^1.0.2",
+    "node-vibrant": "^2.1.2",
+    "promise": "^7.1.1"
+  }
+}

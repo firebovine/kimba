@@ -1,0 +1,5 @@
+.apikey
+*.gif
+*.png
+*.jpg
+node_modules
