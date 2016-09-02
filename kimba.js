@@ -104,7 +104,7 @@ function getImagePalette(url) {
         //return reject(error);
         return resolve(null);
       } else if ( response.statusCode !== 200 ) {
-        err = new Error("Unexpected status code: " = response.statusCode);
+        err = new Error("Unexpected status code: " + response.statusCode);
         err.response = response;
         //return reject(error);
         return resolve(null);
