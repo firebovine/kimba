@@ -132,7 +132,7 @@ function getImagePalette(url) {
 function createFrame(color) {
   return new Promise(function(resolve, reject) {
     var frameNameHash = crypto.createHash('md5').update(color).digest("hex")
-    var frameName = TMP_DIR + "/kimbalayer_" + frameNameHash
+    var frameName = TMP_DIR + "/kimbalayer_" + frameNameHash + ".png"
     var conversionOpts = [input_file]
     if ( mask_file ) {
       conversionOpts.push("-mask")
@@ -218,7 +218,10 @@ function processColors(palettes) {
   for (var i=0; i<palettes.length; i++) {
     if ( palettes[i] !== null ) {
       for ( var key in palettes[i] ) {
-        colors.push("rgb("+palettes[i][key].rgb.join(",")+")");
+        if ( 'rgb' in palettes[i][key] )
+        {
+           colors.push("rgb("+palettes[i][key].rgb.join(",")+")");
+        }
       }
     }
   }
@@ -245,12 +248,12 @@ function main()
 {
   processArgs();
   getHoliday(function(holiday) {
-    search_query = "?q=" + encodeURIComponent(holiday.name) + "+holiday+colors&engines=google+images&categories=images&format=json";
+    search_query = "?q=" + encodeURIComponent(holiday.name) + "+holiday+colors+filetype:jpg&engines=google+images&categories=images&format=json";
     search_url = SEARX_INSTANCE + search_query;
     request(search_url, function(error, response, body) {
       if (!error && response.statusCode == 200) {
         var body = JSON.parse(body);
-        var first_nine = body.results.slice(0, 1);
+        var first_nine = body.results.slice(0, 9);
         var images = [];
         for ( var key in first_nine ) {
           images.push(first_nine[key].img_src);
